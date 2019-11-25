@@ -9,8 +9,7 @@ namespace Novemberprojektet
     class Utils
     {
 
-        public static Random generator = new Random();
-
+        public static Random generator = new Random();        
 
         public static string ToUpperFirstLetter(string name)
         {
@@ -23,11 +22,45 @@ namespace Novemberprojektet
             // return the array made of the new char array
             return new string(letters);
         }
+        
+        public static int MultipleChoiceInput(int range)        
+        {   string index ="";
+            bool choiseCheck = false;
+            while (choiseCheck == false)
+            {
+             index = Console.ReadLine();
+            if(index == "1")
+            {
+                return 1;
+                choiseCheck = true;
+            }
+            else if (index == "2" && range >=2)
+            {
+                return 2;
+                    choiseCheck = true;
+            } 
+            else if (index == "3" && range >=3)
+            {               
+                return 3;
+                    choiseCheck = true;
+            }
+            else if (index == "4" && range >=4)
+            {
+                return 4;
+                    choiseCheck = true;
+            }
+            else            
+            {
 
-        /*public static int MultipleChoiceInput(string input)        
-        {
+                    Console.WriteLine("Please write 1-" + range +" to choose");
+                    choiseCheck = false;
+            }
+            
+            }         
+            
+           return 0; 
 
-        }*/
+        }
     }
     
 }

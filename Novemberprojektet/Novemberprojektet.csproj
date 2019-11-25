@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game.cs" />
     <Compile Include="GenerationPicker.cs" />
     <Compile Include="PokeFactory.cs" />
     <Compile Include="Pokemon.cs" />
