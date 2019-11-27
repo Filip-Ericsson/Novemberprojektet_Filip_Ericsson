@@ -9,7 +9,8 @@ namespace Novemberprojektet
     class Pokemon
     {
         public string name = "";
-
+        public int hp = 20;
+        public int dmg = 5;
         public string Types
         {
             get
