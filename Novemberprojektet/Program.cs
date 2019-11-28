@@ -13,9 +13,6 @@ namespace Novemberprojektet
         static void Main(string[] args)
         {
 
-            Console.WriteLine(Console.ReadLine());
-
-            Console.ReadLine();
             Game.PlayGame();
 
             //Att göra!

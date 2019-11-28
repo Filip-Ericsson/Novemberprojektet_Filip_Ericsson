@@ -23,6 +23,14 @@ namespace Novemberprojektet
             return new string(letters);
         }
         
+        public static string[] pokemonTypeSplitter(string pokemonTypes)
+        {
+
+           string[] splitTypesPokemon = pokemonTypes.Split(' ');
+       
+            return splitTypesPokemon;
+
+        }
         public static int MultipleChoiceInput(int range)        
         {   string index ="";
             bool choiseCheck = false;

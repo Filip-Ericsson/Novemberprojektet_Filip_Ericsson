@@ -106,14 +106,21 @@ namespace Novemberprojektet
                 }
 
                 alyPokemonHp = alyPokemonHp - Attack(enemyType, alyPokemonType);
-                Console.WriteLine(enemyPokemonName + " dealt " + (Attack(alyPokemonType, enemyType)) + " dmg to "+ alyPokemonName);
+                Console.WriteLine(enemyPokemonName + " dealt " + (Attack(enemyType, alyPokemonType)) + " dmg to "+ alyPokemonName);
 
                 Console.ReadLine();
                 Console.Clear();
 
             }
-            
-           
+
+            if (alyPokemonHp > 0)
+            {
+                Console.WriteLine("You Win!");
+            }
+            else
+            {
+                Console.WriteLine("Aqwus Wins!");
+            }
 
             
 
