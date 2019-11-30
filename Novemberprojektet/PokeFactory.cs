@@ -8,29 +8,28 @@ using Newtonsoft.Json;
 
 namespace Novemberprojektet
 {
-    class PokeFactory
+    class PokeFactory //kod för att hämta pokeapi 
     {
         RestClient client;
 
         public PokeFactory()
         {
-            client = new RestClient("https://pokeapi.co/api/v2/");
+            client = new RestClient("https://pokeapi.co/api/v2/"); //skapar vi klienten 
 
-            GenerationPicker.Generation();
+            GenerationPicker.Generation(); //slumpas vilken generation som vi kör med under en playthrough
             
         }
         
-        public Pokemon Hatch()
-        {
-            client = new RestClient("https://pokeapi.co/api/v2/");
+        public Pokemon Hatch() //hatch kläcker en ny pokemon till världen
+        {            
 
-            int pokeID = Utils.generator.Next(GenerationPicker.pokemonLower, GenerationPicker.pokemonHigher);
+            int pokeID = Utils.generator.Next(GenerationPicker.pokemonLower, GenerationPicker.pokemonHigher); //pokeID vilket representerar en pokemon med respektive värde i pokedexet, värde beroende vilken generation
             
-            RestRequest request = new RestRequest("pokemon/" + pokeID);            
+            RestRequest request = new RestRequest("pokemon/" + pokeID);            //Här önskas/förfrågas api:n att skicka en pokemon
 
-            IRestResponse response = client.Get(request);            
+            IRestResponse response = client.Get(request);            //svar från api:n
 
-            Pokemon pokemon = JsonConvert.DeserializeObject<Pokemon>(response.Content);
+            Pokemon pokemon = JsonConvert.DeserializeObject<Pokemon>(response.Content); //översätts informationen från sidan till något användbart
 
             return pokemon;
         }

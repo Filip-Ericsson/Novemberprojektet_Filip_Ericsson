@@ -8,26 +8,50 @@ namespace Novemberprojektet
 {
     class Type
     {
+        //En egen enum för alla pokemontyper som finns i spelet, 18 st totalt 
         public enum PokemonType
         {
             bug, dark, dragon, electric, fairy, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, steel, water
         }
 
+        //Ett dictionary som sparar alla typadvantages mellan typerna, typen som är svag mot något är TKeyn och alla typer som är starka är TValuen 
         static Dictionary<PokemonType, PokemonType[]> weaknesses = new Dictionary<PokemonType, PokemonType[]>();
-        public string name;
-        public Type()
-        {
 
-            if (weaknesses.Count==0)
+        //Detta dictionary låter programmet taemot strings för alla typer från game och konverterar dem till enumen PokemonType
+        static Dictionary<string, PokemonType> translator = new Dictionary<string, PokemonType>(); //eftersom Tkeyn är en string kan man skicka en string som input och få enumen som return då den är värdet.
+        public string name;
+        public Type() //I konstruktorn av Type läggs alla typeweaknesses till i dictionariet första gången classen körs, även alla typer läggs till i translate.
+        {
+            
+            if (weaknesses.Count == 0)
             {
 
                 AddWeakness();
+                
+                List<string> pokemonTypes = new List<string> { "bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water" };
+
+                for (int i = 0; i < pokemonTypes.Count; i++)
+                {
+                    string tTypes = pokemonTypes[i];
+                    
+                    PokemonType cl;
+
+                    if (Enum.TryParse<PokemonType>(tTypes, out cl))
+                    {
+                        translator.Add(tTypes, cl);
+
+
+                    }
+
+                    
+                }
             }
         }
 
-        public void AddWeakness()
+        public void AddWeakness() //Här finns alla 18 olika typer med deras weaknesses, med samma mönster kan man göra imunity etc, men det tar bara mycket tid.
         {
-            Console.WriteLine("Add count");
+            //Tänker bara förklara en typ då alla är samma... 
+            //Man lägger till typen till dictionariet som Tkey och sparar alla typer som är supereffectiva som Tvalue till den Tkeyn
             weaknesses.Add(PokemonType.bug, new PokemonType[] {
                 PokemonType.fire,
                 PokemonType.flying,
@@ -136,43 +160,35 @@ namespace Novemberprojektet
             });
         }
 
-
+        public PokemonType Translate(string typeToTranslate)
+        {                      
+                        
+            return translator[typeToTranslate.Trim().ToLower()]; //"Översätter" en string till enumen PokemonType
+        }
         public int TypeDmgMod(string attackingType, string defendingType)
         {
-
-            Dictionary<string, PokemonType> translator = new Dictionary<string, PokemonType>();
-
-            List<string> pokemonTypes = new List<string> { "bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water" };
-
-            for (int i = 0; i < pokemonTypes.Count; i++)
-            {
-                string tTypes = pokemonTypes[i];
-
-                PokemonType cl;
-
-                if (Enum.TryParse<PokemonType>(tTypes, out cl))
-                {
-                    translator.Add(tTypes, cl);
-                }
-            }
+                     
+                       
+            //För att beräkna om det är någon typeadvantage översätter man attackerande och motagande typ från en string till enum
+            PokemonType attacking = Translate(attackingType);
             
+            PokemonType defending = Translate(defendingType);
             
-            PokemonType attacking = translator[attackingType];
-            PokemonType defending = translator[defendingType];    
-                      
 
-            if (weaknesses[defending].Contains(attacking))
+            if (weaknesses[defending].Contains(attacking)) //Om attackerande pokemonstyp finns i listan av försvarande typens svagheter returneras 2.
             {
                 return 2;
             }
             else
             {
-                return 1;
+                return 0;
             }
 
-
-
             
+
+
+
+
 
 
         }

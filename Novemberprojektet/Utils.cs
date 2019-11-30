@@ -8,10 +8,11 @@ namespace Novemberprojektet
 {
     class Utils
     {
-
+        //Lite olika anvädbara utils 
+        //En statisk random generator, statisk eftersom om man försöker att slumpa mångagånger på en mycket kort tid blir det inte samma värde på slumpen
         public static Random generator = new Random();        
 
-        public static string ToUpperFirstLetter(string name)
+        public static string ToUpperFirstLetter(string name)//inte min kod. Tack mathias
         {
             if (string.IsNullOrEmpty(name))
                 return string.Empty;
@@ -23,7 +24,7 @@ namespace Novemberprojektet
             return new string(letters);
         }
         
-        public static string[] pokemonTypeSplitter(string pokemonTypes)
+        public static string[] pokemonTypeSplitter(string pokemonTypes)//delar på en string till en array, 
         {
 
            string[] splitTypesPokemon = pokemonTypes.Split(' ');
@@ -31,7 +32,7 @@ namespace Novemberprojektet
             return splitTypesPokemon;
 
         }
-        public static int MultipleChoiceInput(int range)        
+        public static int MultipleChoiceInput(int range) //en metod som används när användaren ska göra val i spelet, låter bara användaren skriva 1- deklarerat värde. allt annat blir felmedelande till användaren       
         {   string index ="";
             bool choiseCheck = false;
             while (choiseCheck == false)

@@ -8,10 +8,12 @@ namespace Novemberprojektet
 {
     class Pokemon
     {
+        //variabler...
         public string name = "";
-        public int hp = 20;
-        public int dmg = 5;
-        public string Types
+        protected int hp = 20;
+        protected int dmg = 5;
+        public string Types //Api kod om typen som pokemon har
+
         {
             get
             {
@@ -30,12 +32,14 @@ namespace Novemberprojektet
 
         public TypeSlot[] types;
 
-        public void PrintTypes()
+        public virtual int Attack() //metod för att pokemon ska göra skada
         {
-            for (int i = 0; i < types.Length; i++)
-            {
-                Console.WriteLine(types[i].type.name);
-            }
+            return dmg;
         }
+        public virtual int Health() //metoden används för att beräkna värde på hälsa 
+        {
+            return hp;
+        }
+       
     }
 }

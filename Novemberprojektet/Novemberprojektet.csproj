@@ -52,10 +52,12 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GenerationPicker.cs" />
+    <Compile Include="PhysicalPokemon.cs" />
     <Compile Include="PokeFactory.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecialPokemon.cs" />
     <Compile Include="Type.cs" />
     <Compile Include="TypeSlot.cs" />
     <Compile Include="Utils.cs" />

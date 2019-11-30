@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestSharp;
-using Newtonsoft.Json;
 
 namespace Novemberprojektet
 {
-    class Program
+    class SpecialPokemon:Pokemon
     {
-        static void Main(string[] args)
+
+        public override int Attack()//en special pokemon gör dubbel skada :)
         {
-            //Startar spelet!
-            
-            Game.PlayGame();  
-        
+            return base.Attack()*2;
         }
     }
 }
